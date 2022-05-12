@@ -71,7 +71,7 @@ form {
 }
 
 .checkbox-label {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding-left: 0.5rem;
 }
 
@@ -84,6 +84,7 @@ form {
 .checkbox {
     opacity: 0;
     cursor: pointer;
+    z-index: 2;
 }
 
 .checkbox-container {
