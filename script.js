@@ -34,8 +34,58 @@ form.addEventListener("click", () => {
 
         if (document.activeElement !== input) {
             if (!input.value) {
-                gsap.to(placeholder, { top: 0, left: 0, scale: 1, duration: 0.5, ease: "Power2.easeOut" })
+                gsap.to(placeholder, {
+                    top: 0, left: 0, scale: 1, duration: 0.5, ease: "Power2.easeOut"
+                })
             }
         }
+        //Validation - Name
+        input.addEventListener("input", e => {
+            if (e.target.type === "text") {
+                let inputText = e.target.value;
+                if (inputText.length > 2) {
+                    modifyColor("#6391E8", line, placeholder)
+                } else (
+                    modifyColor("#FE8C99", line, placeholder)
+                )
+            }
+
+            //Validation - Email
+            if (e.target.type === "email") {
+                let valid = validateEmail(e.target.value);
+                if (valid) {
+                    modifyColor("#6391E8", line, placeholder)
+                } else {
+                    modifyColor("#FE8C99", line, placeholder)
+                }
+            }
+            //Validation - Phone Number
+            if (e.target.type === "tel") {
+                let valid = validatePhone(e.target.value);
+                if (valid) {
+                    modifyColor("#6391E8", line, placeholder)
+                } else {
+                    modifyColor("#FE8C99", line, placeholder)
+                }
+            }
+        })
     })
 })
+
+
+//Email validation
+
+function validateEmail(email) {
+    let re = /\S+@\S+\.\S+/;
+    return re.test(email)
+}
+
+function validatePhone(phone) {
+    let re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    return re.test(phone)
+}
+
+function modifyColor(color, line, placeholder) {
+    gsap.to(line, { stroke: color, duration: 0.75 })
+    gsap.to(placeholder, { color: color, duration: 0.75 })
+}
