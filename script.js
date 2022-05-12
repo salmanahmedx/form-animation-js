@@ -24,3 +24,18 @@ containers.forEach(container => {
         tl.to(placeholder, { top: -15, left: 0, scale: 0.7, duration: 0.5, ease: Power2.easeOut }, "<15%");
     })
 })
+
+//Revert back when input is not focused
+form.addEventListener("click", () => {
+    containers.forEach(container => {
+        const input = container.querySelector(".input")
+        const line = container.querySelector(".elastic-line")
+        const placeholder = container.querySelector(".placeholder")
+
+        if (document.activeElement !== input) {
+            if (!input.value) {
+                gsap.to(placeholder, { top: 0, left: 0, scale: 1, duration: 0.5, ease: "Power2.easeOut" })
+            }
+        }
+    })
+})
