@@ -16,6 +16,7 @@ body {
 }
 
 form {
+    position: relative;
     height: 40vh;
     width: 80vw;
     background: white;
@@ -133,4 +134,13 @@ button {
     cursor: pointer;
     margin-top: 1rem;
     align-self: flex-start;
+}
+
+/* character */
+
+#character {
+    position: absolute;
+    transform: scale(0.7) translate(30%, 30%);
+    bottom: -70px;
+    left: 0;
 }
