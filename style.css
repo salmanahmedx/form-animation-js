@@ -18,11 +18,11 @@ body {
 form {
     position: relative;
     height: 40vh;
-    width: 80vw;
+    width: 50vw;
     background: white;
     color: #777474;
     border-radius: 2rem;
-    padding: 3rem 5rem;
+    padding: 2rem 3rem;
     display: flex;
 }
 
@@ -156,4 +156,26 @@ button {
     transform: translate(-50%, -50%);
     text-align: center;
     opacity: 0;
+}
+
+@media screen and (max-width: 812px) {
+    form {
+        width: 90vw;
+        min-height: 80vh;
+        flex-direction: column;
+        padding: 5rem 2rem;
+    }
+
+    #character {
+        left: 34%;
+        transform: scale(0.6) translate(30%, 30%);
+    }
+
+    .contact-left {
+        flex-basis: 20%;
+    }
+
+    .contact-right {
+        flex-basis: 60%;
+    }
 }
